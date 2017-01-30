@@ -1,6 +1,0 @@
-bin/*
-!bin
-dep/*
-!dep
-obj/*
-!obj
