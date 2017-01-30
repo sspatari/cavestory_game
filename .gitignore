@@ -1,6 +1,6 @@
 bin/*
-!bin/.gitkeep
+!bin
 dep/*
-!dep/.gitkeep
+!dep
 obj/*
-!obj/.gitkeep
+!obj
