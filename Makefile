@@ -36,3 +36,6 @@ $(DEP_DIR)/%.d: $(SRC_DIR)/%.cpp
 
 clean:
 	$(RM) $(OBJS) $(DEPS) $(TARGET)
+
+run:
+	./$(TARGET)

@@ -1,1 +1,1 @@
-obj/main.o: src/main.cpp include/graphics.h
+obj/main.o: src/main.cpp include/game.h

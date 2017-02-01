@@ -2,12 +2,10 @@
   The entry point of the program
 */
 
-#include "graphics.h"
+#include "game.h"
 
 int main(int argc, const char* argv[]) {
-  Graphics graphics;
-    while(true) {
-
-    }
-  return 0;
+   Game game;
+   
+   return 0;
 }
