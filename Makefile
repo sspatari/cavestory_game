@@ -4,7 +4,7 @@ CFLAGS = -g -Wall
 
 INCLUDES = -Iinclude
 
-LIBS = -lSDL2 -lSDL2main -lSDL2_image
+LIBS = -lSDL
 
 SRC_DIR = src
 OBJ_DIR = obj
