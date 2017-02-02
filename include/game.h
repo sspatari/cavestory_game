@@ -6,7 +6,7 @@ public:
     Game();
     ~Game();
 private:
-
+   void eventLoop();
 };
 
 #endif // GAME_H
