@@ -1,7 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-struct SDL_Surface;
+#include <boost/scoped_ptr.hpp>
+
+struct Sprite;
+struct Graphics;
 
 class Game {
 public:
@@ -10,8 +13,9 @@ public:
 private:
    void eventLoop();
    void update();
-   void draw();
-   SDL_Surface* screen_;
+   void draw(Graphics& graphics);
+
+   boost::scoped_ptr<Sprite> sprite_;
 };
 
 #endif // GAME_H
