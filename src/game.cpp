@@ -4,11 +4,14 @@
 #include <SDL/SDL.h>
 #include "game.h"
 #include "graphics.h"
-#include "sprite.h"
+#include "animated_sprite.h"
 
 namespace {
 const int kFps = 60;
 }
+
+//static
+int Game::kTileSize = 32;
 
 Game::Game() {
    SDL_Init(SDL_INIT_EVERYTHING);
@@ -24,11 +27,12 @@ void Game::eventLoop() {
    Graphics graphics;
    SDL_Event event;
 
-   sprite_.reset(new Sprite(
+   sprite_.reset(new AnimatedSprite(
             "content/MyChar.bmp",
-             0, 0, 32, 32));
+             0, 0, kTileSize, kTileSize, 15, 3));
 
    bool running  = true;
+   int last_update_time = SDL_GetTicks();
    while (running) {
       const int start_time_ms = SDL_GetTicks();
       while (SDL_PollEvent(&event)) {
@@ -42,7 +46,9 @@ void Game::eventLoop() {
                break;
          }
       }
-      update();
+      const int current_time_ms = SDL_GetTicks();
+      update(current_time_ms - last_update_time);
+      last_update_time = current_time_ms;
       draw(graphics);
       const int elapsed_time_ms = SDL_GetTicks() - start_time_ms;
       SDL_Delay(1000/*ms*/ / 60/*fps*/ - elapsed_time_ms/*ms*/);
@@ -54,7 +60,8 @@ void Game::eventLoop() {
    //    draw()   draw everything!
 }
 
-void Game::update() {
+void Game::update(int elapsed_time_ms) {
+   sprite_->update(elapsed_time_ms);
 }
 
 void Game::draw(Graphics& graphics) {

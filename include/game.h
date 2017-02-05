@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_H_
+#define GAME_H_
 
 #include <boost/scoped_ptr.hpp>
 
@@ -8,14 +8,16 @@ struct Graphics;
 
 class Game {
 public:
-    Game();
-    ~Game();
+   Game();
+   ~Game();
+
+   static int kTileSize;
 private:
    void eventLoop();
-   void update();
+   void update(int elapsed_time_ms);
    void draw(Graphics& graphics);
 
    boost::scoped_ptr<Sprite> sprite_;
 };
 
-#endif // GAME_H
+#endif // GAME_H_

@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
+#ifndef GRAPHICS_H_
+#define GRAPHICS_H_
 
 struct SDL_Surface;
 struct SDL_Rect;
@@ -18,5 +18,4 @@ private:
 
 };
 
-#endif // GRAPHICS_H
-
+#endif // GRAPHICS_H_
