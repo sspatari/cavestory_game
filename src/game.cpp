@@ -5,6 +5,7 @@
 #include "game.h"
 #include "graphics.h"
 #include "animated_sprite.h"
+#include "input.h"
 
 namespace {
 const int kFps = 60;
@@ -25,6 +26,7 @@ Game::~Game() {
 
 void Game::eventLoop() {
    Graphics graphics;
+   Input input;
    SDL_Event event;
 
    sprite_.reset(new AnimatedSprite(
@@ -35,17 +37,24 @@ void Game::eventLoop() {
    int last_update_time = SDL_GetTicks();
    while (running) {
       const int start_time_ms = SDL_GetTicks();
+      input.beginNewFrame();
       while (SDL_PollEvent(&event)) {
          switch(event.type) {
             case SDL_KEYDOWN:
-               if(event.key.keysym.sym == SDLK_ESCAPE) {
-                  running = false;
-               }
+               input.keyDownEvent(event);
+               break;
+            case SDL_KEYUP:
+               input.keyUpEvent(event);
                break;
             default:
                break;
          }
       }
+
+      if (input.wasKeyPressed(SDLK_ESCAPE)) {
+         running = false;
+      }
+
       const int current_time_ms = SDL_GetTicks();
       update(current_time_ms - last_update_time);
       last_update_time = current_time_ms;

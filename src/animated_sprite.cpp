@@ -21,7 +21,7 @@ void AnimatedSprite::update(int elapsed_time_ms) {
       elapsed_time_ = 0;
       if (current_frame_ < num_frames_) {
          source_rect_.x += Game::kTileSize;
-      }else {
+      } else {
          source_rect_.x -= Game::kTileSize * (num_frames_ - 1);
          current_frame_ = 0;
       }
