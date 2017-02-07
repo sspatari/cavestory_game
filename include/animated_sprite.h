@@ -10,7 +10,7 @@ struct AnimatedSprite : public Sprite {
          int width, int height,
          int fps, int num_frames);
 
-   virtual void update(int elapsed_time_ms);
+   void update(int elapsed_time_ms);
 
 private:
    const int frame_time_;
